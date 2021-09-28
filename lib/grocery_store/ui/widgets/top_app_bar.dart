@@ -23,9 +23,9 @@ class TopAppBar extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],

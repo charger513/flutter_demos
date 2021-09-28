@@ -46,7 +46,7 @@ class CouponListItem extends StatelessWidget {
               left: 20,
               child: Text(
                 cupon.text,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
