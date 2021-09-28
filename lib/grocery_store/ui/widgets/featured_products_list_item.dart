@@ -19,7 +19,7 @@ class FeaturedProductsListItem extends StatelessWidget {
           children: [
             SizedBox(
               width: 200,
-              child: Image.network(
+              child: Image.asset(
                 product.imageUrl,
                 height: double.infinity,
                 fit: BoxFit.cover,

@@ -17,7 +17,7 @@ class CouponListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: Stack(
           children: [
-            Image.network(
+            Image.asset(
               cupon.imageUrl,
               height: double.infinity,
               width: double.infinity,
