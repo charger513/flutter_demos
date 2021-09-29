@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Portafolio UI',
+                  'Portfolio UI',
                   style: GoogleFonts.pacifico(
                     textStyle: const TextStyle(
                       fontSize: 25,
