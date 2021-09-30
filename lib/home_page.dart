@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_portafolio/grocery_store/ui/pages/grocery_store_home_page.dart';
+import 'package:flutter_portafolio/parallax_scroll/ui/pages/parallax_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Portfolio UI',
+                  'Demos UI',
                   style: GoogleFonts.pacifico(
                     textStyle: const TextStyle(
                       fontSize: 25,
@@ -34,6 +35,19 @@ class HomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => const GroceryStoreHomePage()));
+                  },
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  title: Text(
+                    'Parallax List UI',
+                    style: GoogleFonts.merriweatherSans(),
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => ParallaxPage()));
                   },
                 ),
               ),
