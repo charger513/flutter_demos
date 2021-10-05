@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_portafolio/grocery_store/ui/pages/grocery_store_home_page.dart';
+import 'package:flutter_portafolio/list_animation/ui/pages/list_animation_page.dart';
 import 'package:flutter_portafolio/page_view_center_scale/ui/pages/page_view_center_scale_page.dart';
 import 'package:flutter_portafolio/parallax_scroll/ui/pages/parallax_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,6 +64,22 @@ class HomePage extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const PageViewCenterScalePage(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  title: Text(
+                    'List Animation',
+                    style: GoogleFonts.merriweatherSans(),
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const ListAnimationPage(),
                       ),
                     );
                   },
