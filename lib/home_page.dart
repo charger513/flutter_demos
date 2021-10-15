@@ -5,6 +5,7 @@ import 'package:flutter_portafolio/list_animation/ui/pages/list_animation_page.d
 import 'package:flutter_portafolio/page_view_center_scale/ui/pages/page_view_center_scale_page.dart';
 import 'package:flutter_portafolio/parallax_scroll/ui/pages/parallax_page.dart';
 import 'package:flutter_portafolio/particles_animations/ui/pages/particles_animations_page.dart';
+import 'package:flutter_portafolio/wave_animation/ui/pages/wave_animation_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -97,6 +98,22 @@ class HomePage extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => ParticlesAnimationsPage(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  title: Text(
+                    'Wave Animation',
+                    style: GoogleFonts.merriweatherSans(),
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => WaveAnimationPage(),
                       ),
                     );
                   },
