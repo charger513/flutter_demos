@@ -21,7 +21,7 @@ class Wave extends StatefulWidget {
 
 class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late final Size size;
+  late Size size;
 
   final List<Particle> bubbles = [];
 
