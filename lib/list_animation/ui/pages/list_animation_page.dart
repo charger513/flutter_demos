@@ -37,11 +37,10 @@ class _ListAnimationPageState extends State<ListAnimationPage> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 100,
-          ),
           Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(top: 100),
               controller: _scrollController,
               itemCount: colors.length,
               itemBuilder: (context, index) {
