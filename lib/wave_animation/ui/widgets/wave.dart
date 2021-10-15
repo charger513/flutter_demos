@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_portafolio/wave_animation/models/emitter.dart';
 import 'package:flutter_portafolio/wave_animation/models/particle.dart';
 
 class Wave extends StatefulWidget {
@@ -24,6 +25,7 @@ class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
   late Size size;
 
   final List<Particle> bubbles = [];
+  final List<Emitter> emitters = [];
 
   @override
   void initState() {
@@ -71,6 +73,33 @@ class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
     );
   }
 
+  void createEmitter(Offset position) {
+    emitters.add(
+      Emitter(
+        position: position,
+        bubbles: List.generate(
+          math.Random().nextInt(15) + 15,
+          (index) {
+            Offset speed = Offset(-1 + math.Random().nextDouble() * 2,
+                -1 + math.Random().nextDouble() * 2);
+            speed = speed * 0.5;
+            return Particle(
+              radius: 5 - math.Random().nextDouble() * 4,
+              position: position,
+              speed: speed,
+              acceleration: const Offset(0, -0.05),
+              color: Colors.white.withOpacity(
+                math.Random().nextDouble().clamp(0.1, 0.9),
+              ),
+              lifetime: 255 * widget.value,
+              maxLifetime: 255 * widget.value,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -79,12 +108,18 @@ class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
         curve: Curves.easeInOut,
       ),
       builder: (context, child) => ClipPath(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: BoxDecoration(color: widget.color),
-          child: CustomPaint(
-            painter: BubblesPainter(bubbles: bubbles),
+        child: GestureDetector(
+          onTapUp: (details) {
+            createEmitter(details.localPosition);
+            print(emitters.length);
+          },
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(color: widget.color),
+            child: CustomPaint(
+              painter: BubblesPainter(bubbles: bubbles, emitters: emitters),
+            ),
           ),
         ),
         clipper: _WaveClipper(
@@ -159,8 +194,12 @@ class _WaveClipper extends CustomClipper<Path> {
 
 class BubblesPainter extends CustomPainter {
   final List<Particle> bubbles;
+  final List<Emitter> emitters;
 
-  BubblesPainter({required this.bubbles});
+  BubblesPainter({
+    required this.bubbles,
+    required this.emitters,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -172,10 +211,18 @@ class BubblesPainter extends CustomPainter {
         bubbles.removeAt(i);
       }
     }
+    for (var i = emitters.length - 1; i >= 0; i--) {
+      final emitter = emitters[i];
+      emitter.update();
+      emitter.draw(canvas);
+      if (emitter.bubbles.isEmpty) {
+        emitters.removeAt(i);
+      }
+    }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return bubbles.isNotEmpty;
+  bool shouldRepaint(BubblesPainter oldDelegate) {
+    return bubbles.isNotEmpty || emitters.isNotEmpty;
   }
 }
