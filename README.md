@@ -9,6 +9,14 @@ Dashboard login demo and side bar.
 
 --------------------------
 
+## E-Commerce
+
+E-Commerce Home Page
+
+<img src="./images/grocery_store/1.png" style="width: 200px;">
+
+--------------------------
+
 ## Parallax Scroll
 
 Parallax Scroll Animation
