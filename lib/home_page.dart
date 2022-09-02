@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_portafolio/control_panel/ui/pages/control_panel_login_page.dart';
 import 'package:flutter_portafolio/grocery_store/ui/pages/grocery_store_home_page.dart';
 import 'package:flutter_portafolio/list_animation/ui/pages/list_animation_page.dart';
 import 'package:flutter_portafolio/page_view_center_scale/ui/pages/page_view_center_scale_page.dart';
@@ -39,6 +39,19 @@ class HomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => const GroceryStoreHomePage()));
+                  },
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  title: Text(
+                    'Control Panel UI',
+                    style: GoogleFonts.merriweatherSans(),
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const ControlPanelLoginPage()));
                   },
                 ),
               ),
