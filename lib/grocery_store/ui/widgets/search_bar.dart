@@ -16,10 +16,10 @@ class SearchBar extends StatelessWidget {
           color: Colors.grey[200],
           borderRadius: BorderRadius.circular(100),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
           child: Row(
-            children: const [
+            children: [
               Icon(Icons.search),
               SizedBox(
                 width: 10,

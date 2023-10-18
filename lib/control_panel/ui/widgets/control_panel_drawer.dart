@@ -32,8 +32,8 @@ class ControlPanelDrawer extends StatelessWidget {
               title: Text('John Doe'),
               subtitle: Text('staff@example.com'),
               leading: CircleAvatar(
-                child: Text('U'),
                 backgroundColor: Colors.blue,
+                child: Text('U'),
               ),
             ),
             const Divider(),

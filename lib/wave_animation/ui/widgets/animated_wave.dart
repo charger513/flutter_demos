@@ -11,7 +11,7 @@ class AnimatedWave extends StatefulWidget {
   final double value;
 
   @override
-  _AnimatedWaveState createState() => _AnimatedWaveState();
+  State<AnimatedWave> createState() => _AnimatedWaveState();
 }
 
 class _AnimatedWaveState extends State<AnimatedWave> {
@@ -39,7 +39,7 @@ class _AnimatedWaveState extends State<AnimatedWave> {
       tween: Tween<double>(begin: lastValue, end: currentValue),
       builder: (ctx, value, _) => Wave(
         value: value,
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.primary,
         direction: Axis.vertical,
       ),
     );

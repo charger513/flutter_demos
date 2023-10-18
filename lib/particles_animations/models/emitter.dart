@@ -3,7 +3,7 @@ import 'package:flutter_portafolio/particles_animations/models/drawable.dart';
 import 'package:flutter_portafolio/particles_animations/models/edges.dart';
 import 'package:flutter_portafolio/particles_animations/models/particle.dart';
 
-class Emitter with Drawable, Edges {
+class Emitter extends Drawable implements Edges {
   final Offset position;
   final List<Particle> particles;
 

@@ -12,8 +12,8 @@ class TopAppBar extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            child: const Text('E'),
             backgroundColor: Colors.grey[850],
+            child: const Text('E'),
           ),
           const SizedBox(width: 10),
           const Text(

@@ -3,6 +3,8 @@ import 'package:flutter_portafolio/parallax_scroll/models/place.dart';
 import 'package:flutter_portafolio/parallax_scroll/ui/widgets/place_item.dart';
 
 class ParallaxPage extends StatelessWidget {
+  const ParallaxPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

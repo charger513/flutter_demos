@@ -51,9 +51,9 @@ class ControlPanelOrderDetailsPage extends StatelessWidget {
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text('Prioridad alta'),
                           Icon(Icons.keyboard_double_arrow_up_rounded)
                         ],

@@ -1,10 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_portafolio/wave_animation/ui/widgets/animated_wave.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class WaveAnimationPage extends StatefulWidget {
+  const WaveAnimationPage({super.key});
+
   @override
   State<WaveAnimationPage> createState() => _WaveAnimationPageState();
 }

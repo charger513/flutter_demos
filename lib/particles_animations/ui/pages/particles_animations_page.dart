@@ -4,6 +4,8 @@ import 'package:flutter_portafolio/particles_animations/ui/pages/multiple_emitte
 import 'package:google_fonts/google_fonts.dart';
 
 class ParticlesAnimationsPage extends StatelessWidget {
+  const ParticlesAnimationsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

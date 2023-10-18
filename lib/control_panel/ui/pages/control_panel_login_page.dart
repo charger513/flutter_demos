@@ -68,13 +68,14 @@ class ControlPanelLoginPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      child: const Text('Log In'),
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.blue, shape: const StadiumBorder()),
+                          backgroundColor: Colors.blue,
+                          shape: const StadiumBorder()),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => const ControlPanelHomePage()));
                       },
+                      child: const Text('Log In'),
                     ),
                   ),
                   const SizedBox(
@@ -83,7 +84,7 @@ class ControlPanelLoginPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: TextButton(
-                      style: TextButton.styleFrom(primary: Colors.blue),
+                      style: TextButton.styleFrom(foregroundColor: Colors.blue),
                       onPressed: () {},
                       child: const Text('Forgot password'),
                     ),

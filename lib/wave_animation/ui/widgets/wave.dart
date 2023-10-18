@@ -17,14 +17,16 @@ class Wave extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _WaveState createState() => _WaveState();
+  State<Wave> createState() => _WaveState();
 }
 
 class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
+
   late Size size;
 
   final List<Particle> bubbles = [];
+
   final List<Emitter> emitters = [];
 
   @override
@@ -108,10 +110,15 @@ class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
         curve: Curves.easeInOut,
       ),
       builder: (context, child) => ClipPath(
+        clipper: _WaveClipper(
+          animationValue: _animationController.value,
+          value: widget.value,
+          direction: widget.direction,
+        ),
         child: GestureDetector(
           onTapUp: (details) {
             createEmitter(details.localPosition);
-            print(emitters.length);
+            //print(emitters.length);
           },
           child: Container(
             height: double.infinity,
@@ -121,11 +128,6 @@ class _WaveState extends State<Wave> with SingleTickerProviderStateMixin {
               painter: BubblesPainter(bubbles: bubbles, emitters: emitters),
             ),
           ),
-        ),
-        clipper: _WaveClipper(
-          animationValue: _animationController.value,
-          value: widget.value,
-          direction: widget.direction,
         ),
       ),
     );
