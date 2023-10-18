@@ -24,8 +24,8 @@ class _RngAnimationPageState extends State<RngAnimationPage>
       vsync: this,
     );
 
-    final tween = IntTween(begin: 0, end: 50)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    final tween = IntTween(begin: 0, end: 25).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     // _controller.addListener(() {
     //   debugPrint(_controller.value.toString());
@@ -39,6 +39,7 @@ class _RngAnimationPageState extends State<RngAnimationPage>
       getRandomNumberInt(tween.value);
       if (tween.isCompleted) {
         setState(() {
+          debugPrint('completed');
           randomNumber = Random().nextInt(100);
         });
       }
