@@ -15,6 +15,20 @@ class _RngAnimationPageState extends State<RngAnimationPage>
   int randomNumber = 0;
   int lastAnimationNumber = 0;
   int currentAnimationNumber = 0;
+  late final Animation<int> tween;
+
+  final words = [
+    'Perro',
+    'Gato',
+    'Pájaro',
+    'Avión',
+    'Computadora',
+    'Televisión',
+    'Videojuego',
+    'Agua',
+    'Aire',
+    'Fuego',
+  ];
 
   @override
   void initState() {
@@ -24,7 +38,7 @@ class _RngAnimationPageState extends State<RngAnimationPage>
       vsync: this,
     );
 
-    final tween = IntTween(begin: 0, end: 25).animate(
+    tween = IntTween(begin: 0, end: 25).animate(
         CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     // _controller.addListener(() {
@@ -35,12 +49,14 @@ class _RngAnimationPageState extends State<RngAnimationPage>
     // });
 
     tween.addListener(() {
-      debugPrint(tween.value.toString());
+      // debugPrint(words[randomNumber]);
+      // debugPrint(randomNumber.toString());
+      // debugPrint(tween.value.toString());
       getRandomNumberInt(tween.value);
       if (tween.isCompleted) {
         setState(() {
           debugPrint('completed');
-          randomNumber = Random().nextInt(100);
+          randomNumber = Random().nextInt(10);
         });
       }
     });
@@ -54,7 +70,7 @@ class _RngAnimationPageState extends State<RngAnimationPage>
 
   void getRandomNumber(double animationValue) {
     if ((animationValue * 100).round() % 5 == 0) {
-      randomNumber = Random().nextInt(100);
+      randomNumber = Random().nextInt(10);
     }
   }
 
@@ -64,7 +80,7 @@ class _RngAnimationPageState extends State<RngAnimationPage>
       lastAnimationNumber = currentAnimationNumber;
       // if (animationValue % 2 == 0) {
       setState(() {
-        randomNumber = Random().nextInt(100);
+        randomNumber = Random().nextInt(10);
       });
       // }
     }
@@ -83,13 +99,38 @@ class _RngAnimationPageState extends State<RngAnimationPage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Number',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            Text(
-              randomNumber.toString(),
-              style: Theme.of(context).textTheme.displayLarge,
+            // Text(
+            //   'Number',
+            //   style: Theme.of(context).textTheme.headlineLarge,
+            // ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 50),
+                transitionBuilder: (child, animation) {
+                  final position = Tween<Offset>(
+                          begin: animation.status == AnimationStatus.completed
+                              ? const Offset(0, -1)
+                              : const Offset(0, 1),
+                          end: Offset.zero)
+                      .animate(animation);
+                  return FadeTransition(
+                    opacity: animation,
+                    child: SlideTransition(
+                      position: position,
+                      child: child,
+                    ),
+                  );
+                },
+                child: FittedBox(
+                  key: ValueKey(randomNumber * tween.value),
+                  child: Text(
+                    words[randomNumber],
+                    key: ValueKey(randomNumber * tween.value),
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
